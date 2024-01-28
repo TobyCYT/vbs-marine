@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="VIREO_KIS.ConceptSearcher"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpf="http://wpfcontrols.com/"
+             xmlns:local="clr-namespace:VIREO_KIS"
+             mc:Ignorable="d" 
+             d:DesignHeight="260" d:DesignWidth="300">
+    <UserControl.Resources>
+        <local:ConceptSuggestionProvider x:Key="csp" />
+    </UserControl.Resources>
+
+    <StackPanel HorizontalAlignment="Right" Width="300">
+        <TextBlock x:Name="txt_Caption" Text="Search by dual-task model:" FontWeight="Bold" FontSize="12" Margin="2"/>
+        <Grid Height="25" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2.25*" />
+                <ColumnDefinition Width="2.25*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Options:" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Center"/>
+            <ComboBox x:Name="model_Type" Grid.Column="1" SelectionChanged="OnModelTypeChange" SelectedIndex="0"/>
+            <ComboBox x:Name="search_Type" Grid.Column="2"  SelectionChanged="OnSearchTypeChange" SelectedIndex="0"/>
+        </Grid>
+
+        <Grid Height="25" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3.5*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Tasks:" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Center"/>
+            <ComboBox x:Name="submission_task" Grid.Column="1" SelectionChanged="OnSubmissionTaskChange" SelectedIndex="0"/>
+            <Button x:Name="btn_refresh_task" Grid.Column="2" Margin="4,0,2,0"  Click="btn_refresh_task_Click">
+                <Image Source="/img/refresh.png" Width="24" />
+            </Button>
+        </Grid>
+
+        <Grid Height="25" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="18*" />
+                <ColumnDefinition Width="28*" />
+                <ColumnDefinition Width="53*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Query:" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,83,0" Foreground="DodgerBlue"/>
+            <wpf:AutoCompleteTextBox Watermark="" Provider="{StaticResource ResourceKey=csp}" x:Name="txt_Subject" Grid.Column="1" Grid.ColumnSpan="2">
+                <wpf:AutoCompleteTextBox.SelectedItem>
+                    <Binding Path="SelectedPath" Mode="TwoWay"/>
+                </wpf:AutoCompleteTextBox.SelectedItem>
+                <wpf:AutoCompleteTextBox.LoadingContent>
+                    <TextBlock Text=""/>
+                </wpf:AutoCompleteTextBox.LoadingContent>
+            </wpf:AutoCompleteTextBox>
+        </Grid>
+
+        <Grid Height="25" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="4.5*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="NOT:" Grid.Column="0" FontWeight="Bold" TextAlignment="Left" VerticalAlignment="Center" Foreground="Red"/>
+            <wpf:AutoCompleteTextBox Watermark="" Provider="{StaticResource ResourceKey=csp}" x:Name="txt_NOT" Grid.Column="1">
+                <wpf:AutoCompleteTextBox.SelectedItem>
+                    <Binding Path="SelectedPath" Mode="TwoWay"/>
+                </wpf:AutoCompleteTextBox.SelectedItem>
+                <wpf:AutoCompleteTextBox.LoadingContent>
+                    <TextBlock Text=""/>
+                </wpf:AutoCompleteTextBox.LoadingContent>
+            </wpf:AutoCompleteTextBox>
+        </Grid>
+
+        <Grid Height="25" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3.6*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btn_Search" Grid.Column="1" Height="25" BorderThickness="0" FontWeight="Bold" Content="Search" Background="DodgerBlue" Click="btn_Search_Click" Margin="2,0,2,0"/>
+            <Button x:Name="btn_Submit_KIS" Grid.Column="2" Height="25" BorderThickness="0" FontWeight="Bold" Content="↑ KIS" Background="DodgerBlue" Click="btn_Submit_KIS_Click" Margin="3,0,3,0"/>
+        </Grid>
+
+        <Grid Height="25" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3.6*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="QA Ans:" Grid.Column="0" FontWeight="Bold" TextAlignment="Left" VerticalAlignment="Center" Foreground="Green"/>
+            <wpf:AutoCompleteTextBox Watermark="" Provider="{StaticResource ResourceKey=csp}" x:Name="txt_answer" Grid.Column="1">
+                <wpf:AutoCompleteTextBox.SelectedItem>
+                    <Binding Path="SelectedPath" Mode="TwoWay"/>
+                </wpf:AutoCompleteTextBox.SelectedItem>
+                <wpf:AutoCompleteTextBox.LoadingContent>
+                    <TextBlock Text=""/>
+                </wpf:AutoCompleteTextBox.LoadingContent>
+            </wpf:AutoCompleteTextBox>
+            <Button x:Name="btn_Answer" Grid.Column="2"  Height="25" BorderThickness="0" FontWeight="Bold" Content="Submit" Background="GreenYellow" Click="btn_Answer_Click" Margin="3,0,3,0"/>
+        </Grid>
+
+    </StackPanel>
+
+</UserControl>

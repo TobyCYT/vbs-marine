@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="VIREO_KIS.AllSearchPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VIREO_KIS"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="370" />
+        </Grid.RowDefinitions>
+        <Button x:Name="btn_Clear" Content="Clear Search Fields" BorderThickness="0"  Background="DodgerBlue" FontWeight="Bold"  Grid.Row="0" Click="btn_Clear_Click" Margin="3"/>
+        <local:ColorSearcher x:Name="src_Color" Grid.Row="1"/>
+        <local:MetadataSearcher x:Name="src_Meta" Grid.Row="2"/>
+        <local:ConceptSearcher x:Name="src_Concept" Grid.Row="3" Loaded="src_Concept_Loaded" Margin="0,0,0,112"/>
+    </Grid>
+</UserControl>

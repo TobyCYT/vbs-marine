@@ -1,0 +1,223 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.IO;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using VIREO_KIS.Properties;
+
+namespace VIREO_KIS
+{
+    /// <summary>
+    /// Interaction logic for MetadataSearcher.xaml
+    /// </summary>
+    public partial class MetadataSearcher : UserControl
+    {
+
+        string META_CALL = Settings.Default.META_JAR_CALL_META;
+        string OCR_CALL = Settings.Default.META_JAR_CALL_OCR;
+        string ASR_CALL = Settings.Default.META_JAR_CALL_ASR;
+        string WORK_DIR = Settings.Default.META_RESULT_WORKING_DIR;
+        string JAVA_LINK = Settings.Default.META_LINK_JAVA;
+        List<string> call;
+        AllSearchPanel containerPanel;
+        MetaSearchResult result;
+
+        public void Clear()
+        {
+            result.Clear();
+            txt_Search.Text = "";
+            chk_ASR.IsChecked = false;
+            chk_OCR.IsChecked = false;
+            chk_Meta.IsChecked = false;
+        }
+
+        public void UpdateParent(AllSearchPanel _mainPanel)
+        {
+            containerPanel = _mainPanel;
+        }
+
+        public MetadataSearcher()
+        {
+            InitializeComponent();
+            result = new MetaSearchResult();
+            call = new List<string>();
+            call.Add(META_CALL);
+            call.Add(OCR_CALL);
+            call.Add(ASR_CALL);
+        }
+
+        void Search()
+        {
+            if (!txt_Search.Text.Replace(" ", "").Equals(""))
+            {
+                try
+                {
+                    if (File.Exists(JAVA_LINK))
+                    {
+                        var processInfo1 = new ProcessStartInfo(JAVA_LINK, call[0] + " " + txt_Search.Text)
+                        {
+                            CreateNoWindow = true,
+                            UseShellExecute = false,
+                            WorkingDirectory = WORK_DIR
+                        };
+
+                        Process proc1;
+
+                        if ((proc1 = Process.Start(processInfo1)) == null)
+                        {
+                            throw new InvalidOperationException("??");
+                        }
+
+                        var processInfo2 = new ProcessStartInfo(JAVA_LINK, call[1] + " " + txt_Search.Text)
+                        {
+                            CreateNoWindow = true,
+                            UseShellExecute = false,
+                            WorkingDirectory = WORK_DIR
+                        };
+
+                        Process proc2;
+
+                        if ((proc2 = Process.Start(processInfo2)) == null)
+                        {
+                            throw new InvalidOperationException("??");
+                        }
+
+                        var processInfo3 = new ProcessStartInfo(JAVA_LINK, call[2] + " " + txt_Search.Text)
+                        {
+                            CreateNoWindow = true,
+                            UseShellExecute = false,
+                            WorkingDirectory = WORK_DIR
+                        };
+
+                        Process proc3;
+
+                        if ((proc3 = Process.Start(processInfo3)) == null)
+                        {
+                            throw new InvalidOperationException("??");
+                        }
+
+                        proc1.WaitForExit();
+                        proc2.WaitForExit();
+                        proc3.WaitForExit();
+
+                        proc1.Close();
+                        proc2.Close();
+                        proc3.Close();
+
+                        result.UpdateResult();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Java excutable file does not exist!");
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+            }
+            else
+            {
+                result.Clear();
+            }
+            containerPanel.UpdateResult(result.Get(), RESULT_UPDATE.FROM_METADATA, result.HasResult(), txt_Search.Text.ToLower(), getCurrentStatus());
+        }
+
+        private void btn_Search_Click(object sender, RoutedEventArgs e)
+        {
+            this.Search();
+        }
+
+        private void txt_Search_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                this.Search();
+            }
+        }
+
+        private void chk_Meta_Click(object sender, RoutedEventArgs e)
+        {
+            result.SwitchMeta();
+            containerPanel.UpdateResult(result.Get(), RESULT_UPDATE.FROM_METADATA, result.HasResult(), txt_Search.Text.ToLower(), getCurrentStatus());
+        }
+
+        private void chk_ASR_Click(object sender, RoutedEventArgs e)
+        {
+            result.SwitchASR();
+            containerPanel.UpdateResult(result.Get(), RESULT_UPDATE.FROM_METADATA, result.HasResult(), txt_Search.Text.ToLower(), getCurrentStatus());
+        }
+
+        private void chk_OCR_Click(object sender, RoutedEventArgs e)
+        {
+            result.SwitchOCR();
+            containerPanel.UpdateResult(result.Get(), RESULT_UPDATE.FROM_METADATA, result.HasResult(), txt_Search.Text.ToLower(), getCurrentStatus());
+        }
+
+        string getCurrentStatus()
+        {
+            string value = "";
+            if (chk_Meta.IsChecked == true)
+            {
+                value = value + "Meta:ON,";
+            }
+            else
+            {
+                value = value + "Meta:OFF,";
+            }
+            if (chk_ASR.IsChecked == true)
+            {
+                value = value + "ASR:ON,";
+            }
+            else
+            {
+                value = value + "ASR:OFF,";
+            }
+            if (chk_OCR.IsChecked == true)
+            {
+                value = value + "OCR:ON,";
+            }
+            else
+            {
+                value = value + "OCR:OFF,";
+            }
+            return value;
+        }
+
+        public string GetUsing()
+        {
+            string toReturn = "";
+            List<string> toAdd = new List<string>();
+            if (result.HasASR())
+            {
+                toAdd.Add("ASR");
+            }
+            if (result.HasOCR())
+            {
+                toAdd.Add("OCR");
+            }
+            if (result.HasMeta())
+            {
+                toAdd.Add("Meta");
+            }
+            toReturn = toReturn + string.Join(",", toReturn);
+            return toReturn;
+        }
+
+        private void txt_Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+    }
+}

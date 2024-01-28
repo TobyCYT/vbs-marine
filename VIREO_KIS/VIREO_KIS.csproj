@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8543B606-980E-4467-9E20-D9C59D0CFB26}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VIREO_KIS</RootNamespace>
+    <AssemblyName>VIREO_KIS_SQL</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.8.10.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.5\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Json, Version=2.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Json.4.7.1\lib\net461\System.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.6\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BasicElements\AllEnum.cs" />
+    <Compile Include="BasicElements\ColorSearchResult.cs" />
+    <Compile Include="BasicElements\ConceptSearchResult.cs" />
+    <Compile Include="BasicElements\DRESClass.cs" />
+    <Compile Include="BasicElements\FusedResult.cs" />
+    <Compile Include="BasicElements\MetaSearchResult.cs" />
+    <Compile Include="BasicElements\TcpSocket.cs" />
+    <Compile Include="BasicElements\TemporalResult.cs" />
+    <Compile Include="BasicElements\TestQuery.cs" />
+    <Compile Include="CustomUIElements\AllSearchPanel.xaml.cs">
+      <DependentUpon>AllSearchPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\ButtonSearcher.xaml.cs">
+      <DependentUpon>ButtonSearcher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\ColorSeacher.xaml.cs">
+      <DependentUpon>ColorSeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicElements\Keyframe.cs" />
+    <Compile Include="CustomUIElements\ConceptSearcher.xaml.cs">
+      <DependentUpon>ConceptSearcher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\ConceptSuggestionProvider.cs" />
+    <Compile Include="CustomUIElements\MetadataSearcher.xaml.cs">
+      <DependentUpon>MetadataSearcher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\VideoFilter.xaml.cs">
+      <DependentUpon>VideoFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\VideoPlayer.xaml.cs">
+      <DependentUpon>VideoPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\ExtraWindowViewer.xaml.cs">
+      <DependentUpon>ExtraWindowViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\WerightSearcher.xaml.cs">
+      <DependentUpon>WerightSearcher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\VideoViewer.xaml.cs">
+      <DependentUpon>VideoViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUIElements\ExtraViewWindow.xaml.cs">
+      <DependentUpon>ExtraViewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DRES\Api\EvaluationApi.cs" />
+    <Compile Include="DRES\Api\EvaluationClientApi.cs" />
+    <Compile Include="DRES\Api\LogApi.cs" />
+    <Compile Include="DRES\Api\StatusApi.cs" />
+    <Compile Include="DRES\Api\SubmissionApi.cs" />
+    <Compile Include="DRES\Api\UserApi.cs" />
+    <Compile Include="DRES\Client\ApiClient.cs" />
+    <Compile Include="DRES\Client\ApiException.cs" />
+    <Compile Include="DRES\Client\ApiResponse.cs" />
+    <Compile Include="DRES\Client\Configuration.cs" />
+    <Compile Include="DRES\Client\ExceptionFactory.cs" />
+    <Compile Include="DRES\Client\GlobalConfiguration.cs" />
+    <Compile Include="DRES\Client\IApiAccessor.cs" />
+    <Compile Include="DRES\Client\IReadableConfiguration.cs" />
+    <Compile Include="DRES\Client\SwaggerDateConverter.cs" />
+    <Compile Include="DRES\Model\ApiAnswer.cs" />
+    <Compile Include="DRES\Model\ApiAnswerSet.cs" />
+    <Compile Include="DRES\Model\ApiAnswerType.cs" />
+    <Compile Include="DRES\Model\ApiClientAnswer.cs" />
+    <Compile Include="DRES\Model\ApiClientAnswerSet.cs" />
+    <Compile Include="DRES\Model\ApiClientEvaluationInfo.cs" />
+    <Compile Include="DRES\Model\ApiClientSubmission.cs" />
+    <Compile Include="DRES\Model\ApiClientTaskTemplateInfo.cs" />
+    <Compile Include="DRES\Model\ApiContentElement.cs" />
+    <Compile Include="DRES\Model\ApiContentType.cs" />
+    <Compile Include="DRES\Model\ApiCreateEvaluation.cs" />
+    <Compile Include="DRES\Model\ApiEvaluation.cs" />
+    <Compile Include="DRES\Model\ApiEvaluationInfo.cs" />
+    <Compile Include="DRES\Model\ApiEvaluationOverview.cs" />
+    <Compile Include="DRES\Model\ApiEvaluationStartMessage.cs" />
+    <Compile Include="DRES\Model\ApiEvaluationState.cs" />
+    <Compile Include="DRES\Model\ApiEvaluationStatus.cs" />
+    <Compile Include="DRES\Model\ApiEvaluationTemplate.cs" />
+    <Compile Include="DRES\Model\ApiEvaluationTemplateOverview.cs" />
+    <Compile Include="DRES\Model\ApiEvaluationType.cs" />
+    <Compile Include="DRES\Model\ApiHint.cs" />
+    <Compile Include="DRES\Model\ApiHintContent.cs" />
+    <Compile Include="DRES\Model\ApiHintOption.cs" />
+    <Compile Include="DRES\Model\ApiHintType.cs" />
+    <Compile Include="DRES\Model\ApiJudgement.cs" />
+    <Compile Include="DRES\Model\ApiJudgementRequest.cs" />
+    <Compile Include="DRES\Model\ApiJudgementValidatorStatus.cs" />
+    <Compile Include="DRES\Model\ApiMediaCollection.cs" />
+    <Compile Include="DRES\Model\ApiMediaItem.cs" />
+    <Compile Include="DRES\Model\ApiMediaItemMetaDataEntry.cs" />
+    <Compile Include="DRES\Model\ApiMediaType.cs" />
+    <Compile Include="DRES\Model\ApiOverrideAnswerSetVerdictDto.cs" />
+    <Compile Include="DRES\Model\ApiPopulatedMediaCollection.cs" />
+    <Compile Include="DRES\Model\ApiRole.cs" />
+    <Compile Include="DRES\Model\ApiRunProperties.cs" />
+    <Compile Include="DRES\Model\ApiScore.cs" />
+    <Compile Include="DRES\Model\ApiScoreOption.cs" />
+    <Compile Include="DRES\Model\ApiScoreOverview.cs" />
+    <Compile Include="DRES\Model\ApiScoreSeries.cs" />
+    <Compile Include="DRES\Model\ApiScoreSeriesPoint.cs" />
+    <Compile Include="DRES\Model\ApiSubmission.cs" />
+    <Compile Include="DRES\Model\ApiSubmissionInfo.cs" />
+    <Compile Include="DRES\Model\ApiSubmissionOption.cs" />
+    <Compile Include="DRES\Model\ApiTarget.cs" />
+    <Compile Include="DRES\Model\ApiTargetContent.cs" />
+    <Compile Include="DRES\Model\ApiTargetOption.cs" />
+    <Compile Include="DRES\Model\ApiTargetType.cs" />
+    <Compile Include="DRES\Model\ApiTask.cs" />
+    <Compile Include="DRES\Model\ApiTaskGroup.cs" />
+    <Compile Include="DRES\Model\ApiTaskOption.cs" />
+    <Compile Include="DRES\Model\ApiTaskOverview.cs" />
+    <Compile Include="DRES\Model\ApiTaskStatus.cs" />
+    <Compile Include="DRES\Model\ApiTaskTemplate.cs" />
+    <Compile Include="DRES\Model\ApiTaskTemplateInfo.cs" />
+    <Compile Include="DRES\Model\ApiTaskType.cs" />
+    <Compile Include="DRES\Model\ApiTeam.cs" />
+    <Compile Include="DRES\Model\ApiTeamAggregatorType.cs" />
+    <Compile Include="DRES\Model\ApiTeamGroup.cs" />
+    <Compile Include="DRES\Model\ApiTeamGroupValue.cs" />
+    <Compile Include="DRES\Model\ApiTeamInfo.cs" />
+    <Compile Include="DRES\Model\ApiTeamTaskOverview.cs" />
+    <Compile Include="DRES\Model\ApiTemporalPoint.cs" />
+    <Compile Include="DRES\Model\ApiTemporalRange.cs" />
+    <Compile Include="DRES\Model\ApiTemporalUnit.cs" />
+    <Compile Include="DRES\Model\ApiUser.cs" />
+    <Compile Include="DRES\Model\ApiUserRequest.cs" />
+    <Compile Include="DRES\Model\ApiVerdictStatus.cs" />
+    <Compile Include="DRES\Model\ApiViewerInfo.cs" />
+    <Compile Include="DRES\Model\ApiVote.cs" />
+    <Compile Include="DRES\Model\CurrentTime.cs" />
+    <Compile Include="DRES\Model\DresInfo.cs" />
+    <Compile Include="DRES\Model\ErrorStatus.cs" />
+    <Compile Include="DRES\Model\LoginRequest.cs" />
+    <Compile Include="DRES\Model\QueryEvent.cs" />
+    <Compile Include="DRES\Model\QueryEventCategory.cs" />
+    <Compile Include="DRES\Model\QueryEventLog.cs" />
+    <Compile Include="DRES\Model\QueryResultLog.cs" />
+    <Compile Include="DRES\Model\RankedAnswer.cs" />
+    <Compile Include="DRES\Model\RunManagerStatus.cs" />
+    <Compile Include="DRES\Model\SuccessfulSubmissionsStatus.cs" />
+    <Compile Include="DRES\Model\SuccessStatus.cs" />
+    <Compile Include="DRES\Model\TemporalPoint.cs" />
+    <Compile Include="DRES\Model\TemporalRange.cs" />
+    <Compile Include="BasicElements\Globals.cs" />
+    <Compile Include="Settings.cs" />
+    <Page Include="CustomUIElements\AllSearchPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUIElements\ButtonSearcher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUIElements\ColorSeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUIElements\ConceptSearcher.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomUIElements\RanklistViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUIElements\MetadataSearcher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUIElements\ExtraWindowViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomUIElements\VideoFilter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomUIElements\WerightSearcher.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CustomUIElements\RanklistViewer.xaml.cs">
+      <DependentUpon>RanklistViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="CustomUIElements\VideoPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUIElements\VideoViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUIElements\ExtraViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicElements\MasterShot.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="App.bak3.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\control_pause_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\control_play_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\arrow-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfControls.CS\WpfControls.CS.csproj">
+      <Project>{bb2abb74-ba58-4812-83aa-ec8171f42df4}</Project>
+      <Name>WpfControls.CS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
